@@ -14,14 +14,16 @@ const App = () => {
   return (
     <CartProvider>
       <BrowserRouter>
-        <NavBar />
-        <Routes>
-          <Route index element={<Landing />} />
-          <Route path="/success" element={<Success />} />
-          <Route path="/cancel" element={<Cancel />} />
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
-        <Footer />
+        <div className="p-5 px-10 flex flex-col gap-20">
+          <NavBar />
+          <Routes>
+            <Route index element={<Landing />} />
+            <Route path="/success" element={<Success />} />
+            <Route path="/cancel" element={<Cancel />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+          <Footer />
+        </div>
       </BrowserRouter>
     </CartProvider>
   );
