@@ -14,7 +14,7 @@ const App = () => {
   return (
     <CartProvider>
       <BrowserRouter>
-        <div className="p-5 px-10 flex flex-col gap-20">
+        <div className="p-5 px-5 md:px-10 flex flex-col gap-20">
           <NavBar />
           <Routes>
             <Route index element={<Landing />} />

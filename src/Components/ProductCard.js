@@ -27,7 +27,7 @@ const ProductCard = ({ product, index }) => {
       {product.image && (
         <img src={product.image} alt={product.name} className="w-full" />
       )}
-      <h2 className="font-semibold text-2xl w-4/5 mx-auto">{product.name}</h2>
+      <h2 className="font-semibold text-2xl md:w-4/5 mx-auto">{product.name}</h2>
       <div className="flex flex-col gap-1 mx-auto">
       <p className="font-bold text-xl text-blue-500">{product.price} PLN</p>
       <p className="font-semibold mt-auto text-sm text-gray-500">{product.price} PLN</p>
@@ -53,7 +53,7 @@ const ProductCard = ({ product, index }) => {
           className="w-max mx-auto p-3 px-7 bg-black text-white rounded-full transition-all duration-300 hover:bg-neutral-700"
           onClick={() => cart.addOneToCart(product.id)}
         >
-          Dodaj do koszyka
+          Zakup
         </button>
       )}
     </div>

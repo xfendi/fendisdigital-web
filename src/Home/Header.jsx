@@ -5,12 +5,12 @@ import Image from "../assets/images/header.png";
 
 const Header = () => {
   return (
-    <h2 className="flex gap-5 px-5">
+    <h2 className="flex flex-col md:flex-row gap-5 md:px-5">
       <div className="flex flex-col gap-5 flex-1">
-        <div className="font-bold text-9xl">
+        <div className="font-bold text-5xl md:text-7xl 2xl:text-9xl">
           Rozpocznij Swój Biznes Online Teraz!
         </div>
-        <div className="text-gray-500 w-1/2">
+        <div className="text-gray-500 md:w-1/2 w-full">
           Skontaktuj się ze mną przez DM, a pomogę Ci zaplanować pierwsze kroki.
           Podzielę się sprawdzonymi wskazówkami, które pozwolą Ci zaoszczędzić
           czas i uniknąć błędów. Odbierz także darmowy e-book z praktycznymi

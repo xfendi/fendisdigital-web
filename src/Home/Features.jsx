@@ -8,17 +8,17 @@ import Tips from "../assets/images/tips.png";
 const Features = () => {
   return (
     <div className="flex flex-col gap-20 mt-20">
-      <div className="w-2/5 text-center m-auto flex flex-col gap-5">
-        <div className="font-bold text-6xl">
+      <div className="w-full md:w-3/5 text-center m-auto flex flex-col gap-5">
+        <div className="font-bold text-5xl sm:text-7xl">
           Praktyczny Przewodnik dla Początkujących
         </div>
-        <div className="text-gray-500">
+        <div className="text-gray-500 md:w-2/3 mx-auto">
           Darmowy e-book, który pomoże Ci przejść od pomysłu do działającego
           biznesu online. Odkryj kluczowe kroki, strategie i błędy, które warto
           unikać.
         </div>
       </div>
-      <div className="flex gap-5 h-[650px] px-44">
+      <div className="flex md:flex-row flex-col gap-5 md:px-20 xl:px-44">
         <div className="bg-yellow-100 flex-1 rounded-[50px] p-5 flex flex-col gap-5 justify-between">
           <img src={Bike} alt="bike" className="w-2/3 m-auto" />
           <div className="flex flex-col gap-5">
