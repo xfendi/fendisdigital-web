@@ -3,6 +3,7 @@ import React from "react";
 import InstagramIcon from "@mui/icons-material/Instagram";
 
 import { FaTiktok } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -18,22 +19,38 @@ const Footer = () => {
         </div>
         <div className="flex gap-16 md:gap-32 font-medium">
           <ul className="flex flex-col gap-5 w-max">
-            <li>
-              <a href="/">O mnie</a>
+            <li
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({
+                  top: document.querySelector("#about").offsetTop,
+                  behavior: "smooth",
+                });
+              }}
+            >
+              <Link>O mnie</Link>
             </li>
             <li>
-              <a href="/">Oferta</a>
+              <Link to="/oferta">Oferta</Link>
             </li>
-            <li>
-              <a href="/">Darmowy E-Book</a>
+            <li
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({
+                  top: document.querySelector("#free").offsetTop,
+                  behavior: "smooth",
+                });
+              }}
+            >
+              <Link>Darmowy E-Book</Link>
             </li>
           </ul>
           <ul className="flex flex-col gap-5 w-max">
             <li>
-              <a href="/">Regulamin</a>
+              <Link to="/regulamin">Regulamin</Link>
             </li>
             <li>
-              <a href="/">Kontakt</a>
+              <Link to="/kontakt">Kontakt</Link>
             </li>
           </ul>
         </div>

@@ -2,19 +2,19 @@ export const ProductsArray = [
   {
     id: 1,
     image: "https://i.imgur.com/19QyIKy.png",
-    name: "Podstawy tworzenia stron internetowych w React JS + AI i zdobywanie pierwszych klientów",
+    name: "Podstawy tworzenia stron internetowych w React JS + Użycie AI i zdobywanie pierwszych klientów",
     price: 44.99,
   },
   {
     id: 2,
     image: "https://i.imgur.com/19QyIKy.png",
-    name: "Podstawy tworzenia stron internetowych w React JS + AI i zdobywanie pierwszych klientów",
-    price: 13.99,
+    name: "",
+    price: 29.99,
   },
   {
     id: 3,
     image: "https://i.imgur.com/19QyIKy.png",
-    name: "Podstawy tworzenia stron internetowych w React JS + AI i zdobywanie pierwszych klientów",
+    name: "",
     price: 134.99,
   },
 ];

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { getProductData } from "../ProductsArray";
 
 export const CartContext = createContext({
@@ -11,7 +11,16 @@ export const CartContext = createContext({
 });
 
 function CartProvider({ children }) {
-  const [cartProducts, setCartProducts] = useState([]);
+  // Pobieranie koszyka z localStorage podczas pierwszego renderu
+  const [cartProducts, setCartProducts] = useState(() => {
+    const savedCart = localStorage.getItem("cart");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+
+  // Zapisz koszyk do localStorage za każdym razem, gdy się zmieni
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartProducts));
+  }, [cartProducts]);
 
   const getProductQuantity = (productId) => {
     const quantity = cartProducts.find(
@@ -24,16 +33,16 @@ function CartProvider({ children }) {
     const quantity = getProductQuantity(productId);
 
     if (quantity === 0) {
-      setCartProducts([
-        ...cartProducts,
+      setCartProducts((prev) => [
+        ...prev,
         {
           id: productId,
           quantity: 1,
         },
       ]);
     } else {
-      setCartProducts(
-        cartProducts.map((product) =>
+      setCartProducts((prev) =>
+        prev.map((product) =>
           product.id === productId
             ? { ...product, quantity: quantity + 1 }
             : product
@@ -48,8 +57,8 @@ function CartProvider({ children }) {
     if (quantity === 1) {
       deleteFromCart(productId);
     } else {
-      setCartProducts(
-        cartProducts.map((product) =>
+      setCartProducts((prev) =>
+        prev.map((product) =>
           product.id === productId
             ? { ...product, quantity: quantity - 1 }
             : product
@@ -59,22 +68,16 @@ function CartProvider({ children }) {
   };
 
   const deleteFromCart = (productId) => {
-    setCartProducts((cartProducts) =>
-      cartProducts.filter((currentProduct) => {
-        return currentProduct.id !== productId;
-      })
+    setCartProducts((prev) =>
+      prev.filter((product) => product.id !== productId)
     );
   };
 
   const getTotalCost = () => {
-    let totalCost = 0;
-
-    cartProducts.map((cartItem, index) => {
+    return cartProducts.reduce((totalCost, cartItem) => {
       const productData = getProductData(cartItem.id);
-      totalCost += (productData.price * cartItem.quantity);
-    });
-
-    return totalCost;
+      return totalCost + productData.price * cartItem.quantity;
+    }, 0);
   };
 
   const contextValue = {

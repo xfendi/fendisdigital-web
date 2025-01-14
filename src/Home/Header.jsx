@@ -5,8 +5,8 @@ import Image from "../assets/images/header.png";
 
 const Header = () => {
   return (
-    <h2 className="flex flex-col md:flex-row gap-5 md:px-5">
-      <div className="flex flex-col gap-5 flex-1">
+    <div className="flex flex-col md:flex-row gap-5">
+      <div className="flex flex-col gap-10 flex-1">
         <div className="font-bold text-5xl md:text-7xl 2xl:text-9xl">
           Rozpocznij Swój Biznes Online Teraz!
         </div>
@@ -24,9 +24,9 @@ const Header = () => {
         </Link>
       </div>
       <div className="flex-1">
-        <img src={Image} alt="" className="mx-auto w-[90%]"  />
+        <img src={Image} alt="" className="ml-auto w-[90%]"  />
       </div>
-    </h2>
+    </div>
   );
 };
 

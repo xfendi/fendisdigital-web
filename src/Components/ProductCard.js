@@ -27,22 +27,22 @@ const ProductCard = ({ product, index }) => {
       {product.image && (
         <img src={product.image} alt={product.name} className="w-full" />
       )}
-      <h2 className="font-semibold text-2xl md:w-4/5 mx-auto">{product.name}</h2>
+      <h2 className="font-semibold text-xl md:w-4/5 mx-auto">{product.name}</h2>
       <div className="flex flex-col gap-1 mx-auto">
-      <p className="font-bold text-xl text-blue-500">{product.price} PLN</p>
-      <p className="font-semibold mt-auto text-sm text-gray-500">{product.price} PLN</p>
+      <p className="font-bold text-2xl text-blue-500">{product.price} PLN</p>
+      <s className="font-semibold mt-auto text-md text-gray-500">{product.id === 2 ? (product.price + 55).toFixed(2) : (product.price + 24).toFixed(2)} PLN</s>
       </div>
       {productQuantity > 0 ? (
         <div className="flex gap-5 m-auto">
           <button
-            className="w-8 h-8 bg-red-500 text-white rounded-lg transition-all duration-300 hover:bg-red-600"
+            className="w-10 h-10 bg-red-500 text-white rounded-full transition-all duration-300 hover:bg-red-600"
             onClick={() => cart.removeOneFromCart(product.id)}
           >
             -
           </button>
           <span className="font-bold">{productQuantity}</span>
           <button
-            className="w-8 h-8 bg-green-500 text-white rounded-lg transition-all duration-300 hover:bg-green-600"
+            className="w-10 h-10 bg-green-500 text-white rounded-full transition-all duration-300 hover:bg-green-600"
             onClick={() => cart.addOneToCart(product.id)}
           >
             +
@@ -53,7 +53,7 @@ const ProductCard = ({ product, index }) => {
           className="w-max mx-auto p-3 px-7 bg-black text-white rounded-full transition-all duration-300 hover:bg-neutral-700"
           onClick={() => cart.addOneToCart(product.id)}
         >
-          Zakup
+          Dodaj do koszyka
         </button>
       )}
     </div>
