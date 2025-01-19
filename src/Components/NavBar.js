@@ -46,8 +46,8 @@ const NavBar = () => {
       <div
         className={`${
           width < 768
-            ? "absolute pointer-events-none top-0 left-0 right-0 bottom-0 opacity-0"
-            : "opacity-100"
+            ? "absolute pointer-events-none top-0 left-0 right-0 bottom-0 hidden opacity-0"
+            : "opacity-100 flex"
         } ${
           width < 768 &&
           showMenu &&
@@ -57,8 +57,8 @@ const NavBar = () => {
         <ul
           className={`${
             width < 768 &&
-            "!flex flex-col absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 !text-white"
-          } text-black text-lg md:text-md font-medium hidden md:flex items-center gap-10 md:gap-5`}
+            "!flex flex-col absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          } text-lg md:text-md font-medium hidden md:flex items-center gap-10`}
           ref={menuRef}
         >
           <li
@@ -71,7 +71,7 @@ const NavBar = () => {
               });
             }}
           >
-            <Link>O Mnie</Link>
+            <Link className="transition-all duration-300 hover:text-blue-500">O Mnie</Link>
           </li>
           <li
             onClick={(e) => {
@@ -83,7 +83,7 @@ const NavBar = () => {
               });
             }}
           >
-            <Link>Oferta</Link>
+            <Link className="transition-all duration-300 hover:text-blue-500">Oferta</Link>
           </li>
           <li
             onClick={(e) => {
@@ -95,32 +95,9 @@ const NavBar = () => {
               });
             }}
           >
-            <Link>Darmowy E-Book</Link>
+            <Link className="transition-all duration-300 hover:text-blue-500">Darmowe Wprowadzenie</Link>
           </li>
         </ul>
-      </div>
-      <div className="flex items-center gap-5">
-        <Link
-          className="relative text-xl text-black transition-all duration-300 hover:text-neutral-800"
-          to="/cart"
-        >
-          <IoCartOutline className="text-3xl" />
-          {productsCount > 0 && (
-            <div className="absolute -bottom-2.5 -right-2.5 text-[11px] bg-red-500 w-5 h-5 flex justify-center items-center rounded-full text-white font-medium">
-              <span>{productsCount}</span>
-            </div>
-          )}
-        </Link>
-        <IoMenu
-          className="text-3xl md:hidden flex"
-          onClick={() => setShowMenu(!showMenu)}
-        />
-        <Link
-          className="md:flex hidden p-3 px-7 bg-black text-white rounded-full transition-all duration-300 hover:bg-neutral-800"
-          to="/oferta"
-        >
-          Zobacz Ofertę
-        </Link>
       </div>
     </div>
   );

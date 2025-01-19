@@ -9,8 +9,8 @@ const Landing = () => {
   return (
     <>
       <Header />
-      <Features />
       <About />
+      <Features />
       <Products />
       <Hero />
     </>

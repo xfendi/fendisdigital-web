@@ -33,14 +33,14 @@ const ProductCard = ({ product, index }) => {
       <s className="font-semibold mt-auto text-md text-gray-500">{product.id === 2 ? (product.price + 55).toFixed(2) : (product.price + 24).toFixed(2)} PLN</s>
       </div>
       {productQuantity > 0 ? (
-        <div className="flex gap-5 m-auto">
+        <div className="flex gap-5 mx-auto items-center">
           <button
             className="w-10 h-10 bg-red-500 text-white rounded-full transition-all duration-300 hover:bg-red-600"
             onClick={() => cart.removeOneFromCart(product.id)}
           >
             -
           </button>
-          <span className="font-bold">{productQuantity}</span>
+          <span className="font-bold text-lg">{productQuantity}</span>
           <button
             className="w-10 h-10 bg-green-500 text-white rounded-full transition-all duration-300 hover:bg-green-600"
             onClick={() => cart.addOneToCart(product.id)}
