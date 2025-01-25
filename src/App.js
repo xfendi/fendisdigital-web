@@ -14,7 +14,7 @@ const App = () => {
   return (
     <CartProvider>
       <BrowserRouter>
-        <div className="py-5 md:px-[15%] 2xl:px-[20%] flex flex-col gap-20 bg-neutral-950 !text-white">
+        <div className="flex flex-col bg-neutral-950 !text-white">
           <NavBar />
           <Routes>
             <Route index element={<Landing />} />

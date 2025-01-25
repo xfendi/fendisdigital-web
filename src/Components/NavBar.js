@@ -2,9 +2,6 @@ import React, { useContext, useState, useEffect, useRef } from "react";
 import { CartContext } from "../Context/CartContext";
 import { Link } from "react-router-dom";
 
-import { IoMenu } from "react-icons/io5";
-import { IoCartOutline } from "react-icons/io5";
-
 const NavBar = () => {
   const cart = useContext(CartContext);
   const productsCount = cart.items.reduce(
@@ -39,7 +36,7 @@ const NavBar = () => {
   console.log(width, showMenu);
 
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex justify-between items-center p-5">
       <Link className="font-semibold text-2xl" to="/">
         Fendis Digital
       </Link>

@@ -1,61 +1,31 @@
-import React, { useContext } from "react";
-import { CartContext } from "../Context/CartContext";
+import React from "react";
+
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ product, index }) => {
-  const cart = useContext(CartContext);
-  const productQuantity = cart.getProductQuantity(product.id);
-
-  console.log(cart.items);
-
   return (
-    <div key={index} className="text-center flex flex-col gap-5 flex-1">
-      {product.id === 1 && (
-        <div className="bg-blue-500 w-max px-3 p-1 rounded-full absolute text-white font-semibold text-[13px]">
-          BESTSELLER
-        </div>
-      )}
-      {product.id === 2 && (
-        <div className="bg-pink-500 w-max px-3 p-1 rounded-full absolute text-white font-semibold text-[13px]">
-          PROMOCJA
-        </div>
-      )}
-      {product.id === 3 && (
-        <div className="bg-black w-max px-3 p-1 rounded-full absolute text-white font-semibold text-[13px]">
-          PAKIET
-        </div>
-      )}
-      {product.image && (
-        <img src={product.image} alt={product.name} className="w-full" />
-      )}
-      <h2 className="font-semibold text-xl md:w-4/5 mx-auto">{product.name}</h2>
-      <div className="flex flex-col gap-1 mx-auto">
-      <p className="font-bold text-2xl text-blue-500">{product.price} PLN</p>
-      <s className="font-semibold mt-auto text-md text-gray-500">{product.id === 2 ? (product.price + 55).toFixed(2) : (product.price + 24).toFixed(2)} PLN</s>
-      </div>
-      {productQuantity > 0 ? (
-        <div className="flex gap-5 mx-auto items-center">
-          <button
-            className="w-10 h-10 bg-red-500 text-white rounded-full transition-all duration-300 hover:bg-red-600"
-            onClick={() => cart.removeOneFromCart(product.id)}
-          >
-            -
-          </button>
-          <span className="font-bold text-lg">{productQuantity}</span>
-          <button
-            className="w-10 h-10 bg-green-500 text-white rounded-full transition-all duration-300 hover:bg-green-600"
-            onClick={() => cart.addOneToCart(product.id)}
-          >
-            +
-          </button>
-        </div>
-      ) : (
-        <button
-          className="w-max mx-auto p-3 px-7 bg-black text-white rounded-full transition-all duration-300 hover:bg-neutral-700"
-          onClick={() => cart.addOneToCart(product.id)}
-        >
-          Dodaj do koszyka
-        </button>
-      )}
+    <div
+      key={index}
+      className={`p-5 ${
+        product.id === 2 ? "bg-neutral-100 text-neutral-950" : "bg-neutral-900"
+      } rounded-3xl border-2 ${
+        product.id === 2 ? "border-neutral-300" : "border-neutral-800"
+      } flex-1 flex flex-col gap-5 text-start`}
+    >
+      <h2 className="font-medium text-2xl">
+        Pakiet <span className="text-blue-500 font-bold">{product.name}</span>
+      </h2>
+      <p
+        className={`${
+          product.id === 2 ? "text-neutral-800" : "text-neutral-300"
+        } text-md`}
+      >
+        {product.description}
+      </p>
+      <p className="font-bold text-4xl text-blue-500">{product.price} PLN</p>
+      <Link className={`p-3 text-center text-lg font-medium rounded-2xl transition-all duration-300 ${product.id === 2 ? "bg-neutral-800 hover:bg-neutral-900 text-neutral-100" : "bg-neutral-100 hover:bg-neutral-200 text-neutral-800"}`}>
+        Zacznij działac!
+      </Link>
     </div>
   );
 };

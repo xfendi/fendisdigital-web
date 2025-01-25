@@ -2,20 +2,25 @@ export const ProductsArray = [
   {
     id: 1,
     image: "https://i.imgur.com/19QyIKy.png",
-    name: "Podstawy tworzenia stron internetowych w React JS + Użycie AI i zdobywanie pierwszych klientów",
-    price: 44.99,
+    name: "BASIC",
+    description: "Zdobądź solidne podstawy z dostępem do pełnego pakietu E-Booków",
+    price: 99.99,
   },
   {
     id: 2,
     image: "https://i.imgur.com/19QyIKy.png",
-    name: "",
-    price: 29.99,
+    name: "PRO",
+    description:
+      "Otrzymaj dostęp do programu i nowoczesnego panelu, gdzie będziesz miec dostęp do wszystkiech wykupionych materiałów i zdobędziesz cenne wskazówki",
+    price: 174.99,
   },
   {
     id: 3,
     image: "https://i.imgur.com/19QyIKy.png",
-    name: "",
-    price: 134.99,
+    name: "ENTER",
+    description:
+      "Pakiet PRO + Kompleksowa edukacja z dodatkowymi materiałami, wsparciem indywidualnym oraz dostępem do ekskluzywnych i zasobów.",
+    price: 239.99,
   },
 ];
 
