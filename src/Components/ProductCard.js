@@ -23,9 +23,24 @@ const ProductCard = ({ product, index }) => {
         {product.description}
       </p>
       <p className="font-bold text-4xl text-blue-500">{product.price} PLN</p>
-      <Link className={`p-3 text-center text-lg font-medium rounded-2xl transition-all duration-300 ${product.id === 2 ? "bg-neutral-800 hover:bg-neutral-900 text-neutral-100" : "bg-neutral-100 hover:bg-neutral-200 text-neutral-800"}`}>
+      <Link
+        className={`p-3 text-center text-lg font-medium rounded-2xl transition-all duration-300 ${
+          product.id === 2
+            ? "bg-neutral-800 hover:bg-neutral-900 text-neutral-100"
+            : "bg-neutral-100 hover:bg-neutral-200 text-neutral-800"
+        }`}
+      >
         Zacznij działac!
       </Link>
+      <div
+        className={`flex flex-col gap-5 pt-5 border-t-2 ${
+          product.id === 2 ? "border-neutral-200" : "border-neutral-800"
+        }`}
+      >
+        <div>
+
+        </div>
+      </div>
     </div>
   );
 };
