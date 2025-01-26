@@ -1,14 +1,7 @@
-import React, { useContext, useState, useEffect, useRef } from "react";
-import { CartContext } from "../Context/CartContext";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
-  const cart = useContext(CartContext);
-  const productsCount = cart.items.reduce(
-    (sum, product) => sum + product.quantity,
-    0
-  );
-
   const [width, setWidth] = useState(window.innerWidth);
   const [showMenu, setShowMenu] = useState(false);
 
@@ -36,7 +29,7 @@ const NavBar = () => {
   console.log(width, showMenu);
 
   return (
-    <div className="flex justify-between items-center p-5">
+    <div className="flex justify-between items-center p-5 md:mx-[10%] 2xl:mx-[15%]">
       <Link className="font-semibold text-2xl" to="/">
         Fendis Digital
       </Link>

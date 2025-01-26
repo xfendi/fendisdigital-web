@@ -13,7 +13,7 @@ const Products = () => {
         <div className="text-5xl sm:text-7xl" style={{ lineHeight: 1.2 }}>
           Wybierz Swój Program
         </div>
-        <div className="flex flex-row gap-5">
+        <div className="flex flex-col md:flex-row gap-5">
           {ProductsArray.map((product, index) => (
             <ProductCard product={product} index={index} />
           ))}

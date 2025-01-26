@@ -11,8 +11,8 @@ const About = () => {
       <div className="text-5xl sm:text-7xl" style={{ lineHeight: 1.2 }}>
         Kim jestem i dlaczego warto mi zaufać?
       </div>
-      <div className="flex flex-row gap-5">
-        <img src={Avatar} alt="" className="w-[40%] rounded-3xl" />
+      <div className="flex flex-col md:flex-row gap-5">
+        <img src={Avatar} alt="" className="w-full md:w-[40%] rounded-3xl" />
         <h1 className="text-lg text-start flex-1 p-5 bg-neutral-900 rounded-3xl border-2 border-neutral-800">
           Cześć, jestem Michał. Od kilku lat pasjonuję się tworzeniem stron
           internetowych i aplikacji, szczególnie w technologii <b>React.js</b>.

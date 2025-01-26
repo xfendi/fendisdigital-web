@@ -2,6 +2,8 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+
 const ProductCard = ({ product, index }) => {
   return (
     <div
@@ -37,9 +39,11 @@ const ProductCard = ({ product, index }) => {
           product.id === 2 ? "border-neutral-200" : "border-neutral-800"
         }`}
       >
-        <div>
-
-        </div>
+        {product.checklist.map((item, index) => (
+          <li key={index} className="flex items-center gap-2">
+            ✅ {item}
+          </li>
+        ))}
       </div>
     </div>
   );
