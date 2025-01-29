@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { db } from "../firebase";
+import { collection, query, where, getDocs, addDoc } from "firebase/firestore";
+import Loading from "../Components/Loading";
 
 const Hero = () => {
   const [email, setEmail] = useState("");
@@ -8,8 +10,21 @@ const Hero = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
+      const emailRef = collection(db, "newsletter");
+      const q = query(emailRef, where("email", "==", email));
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        setMessage("❌ Ten email jest już zapisany!");
+        setLoading(false);
+        return;
+      }
+
+      await addDoc(emailRef, { email });
+
       const response = await fetch("http://localhost:5000/send-newsletter", {
         method: "POST",
         headers: {
@@ -41,6 +56,7 @@ const Hero = () => {
       <div className="text-5xl sm:text-7xl" style={{ lineHeight: 1.2 }}>
         Pozostań na bierząco z wszystkimi nowościami!{" "}
       </div>
+      {message && <div className="text-sm">{message}</div>}
       <form
         className="flex flex-col sm:flex-row gap-5 items-center mx-auto w-full justify-center"
         onSubmit={handleSubmit}
@@ -49,14 +65,14 @@ const Hero = () => {
           type="email"
           placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
-          className="p-3 px-7 border w-full md:w-96 text-black rounded-full"
+          className="border w-full md:w-96 h-12 px-5 text-black rounded-full"
           required
         />
         <button
           type="submit"
-          className="p-3 px-7 text-[15px] font-medium w-max rounded-3xl transition-all duration-300 bg-blue-500 hover:bg-blue-600"
+          className="text-[15px] font-medium w-36 h-12 rounded-3xl transition-all duration-300 bg-blue-500 hover:bg-blue-600"
         >
-          Subskrybuj
+          {loading ? <Loading /> : "Subskrybuj"}
         </button>
       </form>
     </div>

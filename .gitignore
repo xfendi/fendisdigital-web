@@ -33,3 +33,5 @@ firestore.rules
 /.github
 /dataconnect
 /dataconnect-generated
+
+/src/assets/pdf
