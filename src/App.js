@@ -8,7 +8,6 @@ import Footer from "./Components/Footer";
 import Landing from "./Pages/Landing";
 import Success from "./Pages/Success";
 import Cancel from "./Pages/Cancel";
-import Cart from "./Pages/Cart";
 
 const App = () => {
   return (
@@ -20,7 +19,6 @@ const App = () => {
             <Route index element={<Landing />} />
             <Route path="/success" element={<Success />} />
             <Route path="/cancel" element={<Cancel />} />
-            <Route path="/cart" element={<Cart />} />
           </Routes>
           <Footer />
         </div>

@@ -1,14 +1,25 @@
 import React, { useState } from "react";
 
-import Security from "../assets/svg/security.svg";
-
 const Hero = () => {
   const [email, setEmail] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(email);
+    try {
+      const response = await fetch("http://localhost:5000/send-newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+      console.log(data.error || "Something went wrong!");
+      setEmail("");
+    } catch (error) {
+      console.error("Error response:", error.response);
+      console.error("Error message:", error.message);
+    }
   };
 
   return (
