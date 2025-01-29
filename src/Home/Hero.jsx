@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const Hero = () => {
   const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -9,16 +12,23 @@ const Hero = () => {
     try {
       const response = await fetch("http://localhost:5000/send-newsletter", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({ email }),
       });
 
       const data = await response.json();
-      console.log(data.error || "Something went wrong!");
-      setEmail("");
+
+      if (response.ok) {
+        setMessage("✅ Subskrypcja zakończona sukcesem!");
+      } else {
+        setMessage(`❌ Błąd: ${data.error || "Nie udało się wysłać"}`);
+      }
     } catch (error) {
-      console.error("Error response:", error.response);
-      console.error("Error message:", error.message);
+      setMessage("❌ Wystąpił błąd podczas subskrypcji.");
+    } finally {
+      setLoading(false);
     }
   };
 
