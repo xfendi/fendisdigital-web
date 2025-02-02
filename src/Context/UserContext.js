@@ -25,6 +25,7 @@ export const UserProvider = ({ children }) => {
     try {
       const result = await signInWithPopup(auth, provider);
       setUser(result.user);
+      return result.user;
     } catch (error) {
       console.error("Błąd logowania:", error);
     }
