@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { auth, db } from "../firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 import Loading from "../Components/Loading";
+
+import { useUser } from "../Context/UserContext";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -15,6 +17,14 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+
+  const { user, loginWithGoogle } = useUser();
+
+  useEffect(() => {
+    if (user) {
+      navigate("/panel");
+    }
+  }, [user, navigate]);
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -30,8 +40,16 @@ const Register = () => {
         return;
       }
 
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const user = userCredential.user;
+
+      await updateProfile(auth.currentUser, {
+        displayName: name,
+      });
 
       await setDoc(userRef, {
         uid: user.uid,
@@ -39,10 +57,6 @@ const Register = () => {
         name: name,
         createdAt: new Date(),
       });
-
-      await updateProfile(auth.currentUser, {
-        displayName: "Jane Q. User",
-      })
 
       const newsletterRef = doc(db, "newsletter", email);
       const newsletterSnap = await getDoc(newsletterRef);
@@ -56,15 +70,22 @@ const Register = () => {
 
       setLoading(false);
       navigate("/panel");
-
     } catch (err) {
       setError(err.message);
     }
   };
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setEmail(params.get("email") || "");
+  }, []);
+
   return (
     <div className="flex flex-col justify-center items-center bg-neutral-950 !text-white w-screen h-screen">
-      <form onSubmit={handleRegister} className="flex flex-col gap-5 w-full px-5 md:w-max">
+      <form
+        onSubmit={handleRegister}
+        className="flex flex-col gap-5 w-full px-5 md:w-max"
+      >
         <div
           className="text-3xl font-semibold w-full text-center"
           style={{ lineHeight: 1 }}
@@ -78,9 +99,15 @@ const Register = () => {
         <button
           type="button"
           id="google"
+          onClick={loginWithGoogle}
           className="w-full md:w-96 h-12 flex gap-2 font-semibold items-center justify-center px-5 text-white rounded-full  border-2 border-neutral-800 transition-all duration-300 hover:bg-neutral-900 cursor-pointer"
         >
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png" alt="google" width={20} />Kontynuuj z Google
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png"
+            alt="google"
+            width={20}
+          />
+          Kontynuuj z Google
         </button>
         <div className="border border-neutral-800 my-5"></div>
         <div className="flex flex-col gap-2">
@@ -103,6 +130,7 @@ const Register = () => {
           <input
             type="email"
             id="email"
+            value={email}
             placeholder="Wpisz swoj email"
             onChange={(e) => setEmail(e.target.value)}
             className="w-full md:w-96 h-12 px-5 text-white rounded-2xl bg-neutral-900 border-2 border-neutral-800"
@@ -122,14 +150,24 @@ const Register = () => {
             required
           />
         </div>
-        {error && <div className="text-red-500 text-sm text-center">{error}</div>}
+        {error && (
+          <div className="text-red-500 text-sm text-center">{error}</div>
+        )}
         <button
           type="submit"
           className="text-[15px] font-medium w-full h-12 rounded-2xl transition-all duration-300 bg-blue-500 hover:bg-blue-600"
         >
           {loading ? <Loading /> : "Zarejestruj się"}
         </button>
-        <p className="text-neutral-300 text-sm text-center">Posiadasz juz konto? <Link to="/login" className="text-white transition-all duration-300 hover:text-blue-500" >Zaloguj się</Link></p>
+        <p className="text-neutral-300 text-sm text-center">
+          Posiadasz juz konto?{" "}
+          <Link
+            to="/login"
+            className="text-white transition-all duration-300 hover:text-blue-500"
+          >
+            Zaloguj się
+          </Link>
+        </p>
       </form>
     </div>
   );

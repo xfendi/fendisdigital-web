@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { auth } from "../firebase";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth, provider } from "../firebase";
+import { onAuthStateChanged, signOut, signInWithPopup } from "firebase/auth";
 
 const UserContext = createContext();
 
@@ -21,18 +21,26 @@ export const UserProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
+  const loginWithGoogle = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      setUser(result.user);
+    } catch (error) {
+      console.error("Błąd logowania:", error);
+    }
+  };
+
   const logout = async () => {
     try {
       await signOut(auth);
       setUser(null);
-      window.location.reload();
     } catch (error) {
       console.error("Błąd wylogowania:", error);
     }
   };
 
   return (
-    <UserContext.Provider value={{ user, loading, logout }}>
+    <UserContext.Provider value={{ user, loading, loginWithGoogle, logout }}>
       {children}
     </UserContext.Provider>
   );
