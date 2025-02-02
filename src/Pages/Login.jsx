@@ -76,6 +76,7 @@ const Login = () => {
   return (
     <div className="flex flex-col justify-center items-center bg-neutral-950 !text-white w-screen h-screen">
       <form
+        data-aos="fade-up"
         onSubmit={handleLogin}
         className="flex flex-col gap-5 w-full px-5 md:w-max"
       >

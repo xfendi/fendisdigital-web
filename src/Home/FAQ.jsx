@@ -89,6 +89,7 @@ const FAQItem = ({ question, answer }) => {
 const FAQSection = () => {
   return (
     <div
+      data-aos="fade-up"
       className="flex flex-col gap-10 text-center justify-center items-center px-5 py-[15%] md:py-[5%] md:px-[10%] 2xl:px-[15%]"
       id="faq"
     >

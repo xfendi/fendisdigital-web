@@ -35,7 +35,7 @@ const Register = () => {
 
       const userRef = doc(db, "users", user.email);
       const userSnap = await getDoc(userRef);
-  
+
       if (!userSnap.exists()) {
         await setDoc(userRef, {
           uid: user.uid,
@@ -60,7 +60,7 @@ const Register = () => {
     } catch (err) {
       setError(err.message);
     }
-  }
+  };
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -119,6 +119,7 @@ const Register = () => {
   return (
     <div className="flex flex-col justify-center items-center bg-neutral-950 !text-white w-screen h-screen">
       <form
+        data-aos="fade-up"
         onSubmit={handleRegister}
         className="flex flex-col gap-5 w-full px-5 md:w-max"
       >

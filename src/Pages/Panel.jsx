@@ -18,7 +18,7 @@ const Panel = () => {
     );
 
   return (
-    <div className="bg-neutral-950 h-screen w-screen flex flex-col gap-5 items-center text-center px-5 justify-center text-white">
+    <div data-aos="fade-up" className="bg-neutral-950 h-screen w-screen flex flex-col gap-5 items-center text-center px-5 justify-center text-white">
       <h1 className="text-3xl">Witaj, {user.displayName || "User"}!</h1>
       <h1 className="text-3xl text-red-500 font-semibold">
         Panel jest aktualnie niedostępny!

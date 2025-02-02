@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import { UserProvider } from "./Context/UserContext";
 
 import Landing from "./Pages/Landing";
@@ -11,6 +14,14 @@ import Panel from "./Pages/Panel";
 import ProtectedRoute from "./Components/ProtectedRoute";
 
 const App = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Czas trwania animacji
+      easing: "ease-in-out", // Easing
+      once: true, // Animacja raz
+    });
+  }, []);
+
   return (
     <UserProvider>
       <BrowserRouter>

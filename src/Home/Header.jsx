@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className="flex flex-col gap-10 items-center text-center h-screen py-[10%] m-auto px-5 md:px-[10%] 2xl:px-[15%]">
+    <div
+      data-aos="fade-up"
+      className="flex flex-col gap-10 items-center text-center h-screen py-[10%] m-auto px-5 md:px-[10%] 2xl:px-[15%]"
+    >
       <div
         className="text-5xl sm:text-7xl font-semibold"
         style={{ lineHeight: 1.2 }}

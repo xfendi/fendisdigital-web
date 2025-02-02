@@ -5,6 +5,7 @@ import Avatar from "../assets/images/avatar.png";
 const About = () => {
   return (
     <div
+      data-aos="fade-up"
       className="flex flex-col gap-10 text-center justify-center items-center px-5 pb-[15%] md:pb-[5%] md:px-[10%] 2xl:px-[15%]"
       id="about"
     >

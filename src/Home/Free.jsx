@@ -7,6 +7,7 @@ import FREE_PDF from "../assets/pdf/FREE.pdf";
 const Free = () => {
   return (
     <div
+      data-aos="fade-up"
       className="flex flex-col gap-10 text-center justify-center items-center px-5 py-[15%] md:py-[5%] md:px-[10%] 2xl:px-[15%]"
       id="free"
     >
@@ -35,7 +36,10 @@ const Free = () => {
               developmentem i chcą szybko zdobyć solidne podstawy! 🚀
             </p>
           </div>
-          <a href={FREE_PDF} className="p-5 px-10 text-lg font-medium w-max rounded-3xl transition-all duration-300 bg-blue-500 hover:bg-blue-600">
+          <a
+            href={FREE_PDF}
+            className="p-5 px-10 text-lg font-medium w-max rounded-3xl transition-all duration-300 bg-blue-500 hover:bg-blue-600"
+          >
             Uzyskaj Dostęp!
           </a>
         </div>
