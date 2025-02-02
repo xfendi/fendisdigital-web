@@ -8,10 +8,7 @@ const Hero = () => {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-
+  const saveEmail = async () => {
     try {
       const emailRef = collection(db, "newsletter");
       const q = query(emailRef, where("email", "==", email));
@@ -20,18 +17,37 @@ const Hero = () => {
       if (!querySnapshot.empty) {
         setMessage("❌ Ten email jest już zapisany!");
         setLoading(false);
-        return;
+        return false;
       }
 
       await addDoc(emailRef, { email });
+      return true;
+    } catch (error) {
+      setMessage("❌ Wystąpił błąd podczas subskrypcji: " + error.message);
+    }
+  };
 
-      const response = await fetch("http://localhost:5000/send-newsletter", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const isSaved = await saveEmail();
+    if (!isSaved) {
+      setLoading(false);
+      return;
+    };
+
+    try {
+      const response = await fetch(
+        "https://fendisdigital-server.onrender.com/send-newsletter",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
 
       const data = await response.json();
 
