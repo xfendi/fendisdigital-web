@@ -3,7 +3,7 @@ import React from "react";
 const Features = () => {
   return (
     <div
-      className="flex flex-col gap-10 text-center justify-center items-center px-5 py-[5%] md:px-[10%] 2xl:px-[15%]"
+      className="flex flex-col gap-10 text-center justify-center items-center px-5 py-[15%] md:py-[5%] md:px-[10%] 2xl:px-[15%]"
       id="features"
     >
       <div className="bg-blue-500 p-2 px-4 text-sm rounded-xl">
@@ -13,8 +13,8 @@ const Features = () => {
         Główne funkcje programu
       </div>
       <div className="flex flex-col gap-5">
-        <div className="flex flex-row gap-5">
-          <div className="p-5 bg-neutral-900 rounded-3xl border-2 border-neutral-800 w-[55%] flex flex-col gap-5 text-start">
+        <div className="flex flex-col md:flex-row gap-5">
+          <div className="p-5 bg-neutral-900 rounded-3xl border-2 border-neutral-800 md:w-[55%] flex flex-col gap-5 text-start">
             <h1 className="font-medium text-xl">
               Pełny dostęp do wiedzy w jednym miejscu
             </h1>
@@ -38,7 +38,7 @@ const Features = () => {
           </div>
         </div>
 
-        <div className="flex flex-row gap-5">
+        <div className="flex flex-col md:flex-row gap-5">
           <div className="p-5 bg-neutral-900 rounded-3xl border-2 border-neutral-800 flex-1 flex flex-col gap-5 text-start">
             <h1 className="font-medium text-xl">
               Zawsze aktualna wiedza i technologie
@@ -50,7 +50,7 @@ const Features = () => {
               aktualnymi wymaganiami rynku pracy.
             </p>
           </div>
-          <div className="p-5 bg-neutral-900 rounded-3xl border-2 w-[55%] border-neutral-800 flex flex-col gap-5 text-start">
+          <div className="p-5 bg-neutral-900 rounded-3xl border-2 md:w-[55%] border-neutral-800 flex flex-col gap-5 text-start">
             <h1 className="font-medium text-xl">
               Wsparcie i społeczność programistów
             </h1>

@@ -8,9 +8,14 @@ import Benefits from "../Home/Benefits";
 import FAQSection from "../Home/FAQ";
 import Free from "../Home/Free";
 
+import NavBar from "../Components/NavBar";
+import Footer from "../Components/Footer";
+
 const Landing = () => {
   return (
     <>
+      <NavBar />
+
       <Header />
       <About />
       <Features />
@@ -19,6 +24,8 @@ const Landing = () => {
       <Free />
       <FAQSection />
       <Hero />
+
+      <Footer />
     </>
   );
 };

@@ -1,13 +1,13 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
-
 import HTML from "../assets/images/HTML.png";
+
+import FREE_PDF from "../assets/pdf/FREE.pdf";
 
 const Free = () => {
   return (
     <div
-      className="flex flex-col gap-10 text-center justify-center items-center px-5 py-[5%] md:px-[10%] 2xl:px-[15%]"
+      className="flex flex-col gap-10 text-center justify-center items-center px-5 py-[15%] md:py-[5%] md:px-[10%] 2xl:px-[15%]"
       id="free"
     >
       <div className="bg-blue-500 p-2 px-4 text-sm rounded-xl">Free</div>
@@ -35,9 +35,9 @@ const Free = () => {
               developmentem i chcą szybko zdobyć solidne podstawy! 🚀
             </p>
           </div>
-          <Link className="p-5 px-10 text-lg font-medium w-max rounded-3xl transition-all duration-300 bg-blue-500 hover:bg-blue-600">
+          <a href={FREE_PDF} className="p-5 px-10 text-lg font-medium w-max rounded-3xl transition-all duration-300 bg-blue-500 hover:bg-blue-600">
             Uzyskaj Dostęp!
-          </Link>
+          </a>
         </div>
       </div>
     </div>

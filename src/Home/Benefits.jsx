@@ -3,7 +3,7 @@ import React from "react";
 const Benefits = () => {
   return (
     <div
-      className="flex flex-col gap-10 text-center justify-center items-center px-5 py-[5%] md:px-[10%] 2xl:px-[15%]"
+      className="flex flex-col gap-10 text-center justify-center items-center px-5 py-[15%] md:py-[5%] md:px-[10%] 2xl:px-[15%]"
       id="features"
     >
       <div className="bg-blue-500 p-2 px-4 text-sm rounded-xl">Benefits</div>

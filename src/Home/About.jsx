@@ -5,7 +5,7 @@ import Avatar from "../assets/images/avatar.png";
 const About = () => {
   return (
     <div
-      className="flex flex-col gap-10 text-center justify-center items-center px-5 py-[5%] md:px-[10%] 2xl:px-[15%]"
+      className="flex flex-col gap-10 text-center justify-center items-center px-5 pb-[15%] md:pb-[5%] md:px-[10%] 2xl:px-[15%]"
       id="about"
     >
       <div className="text-5xl sm:text-7xl" style={{ lineHeight: 1.2 }}>

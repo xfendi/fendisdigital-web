@@ -49,7 +49,7 @@ const Hero = () => {
 
   return (
     <div
-      className="flex flex-col gap-10 text-center justify-center items-center px-5 py-[5%] md:px-[10%] 2xl:px-[15%]"
+      className="flex flex-col gap-10 text-center justify-center items-center px-5 py-[15%] md:py-[5%] md:px-[10%] 2xl:px-[15%]"
       id="newsletter"
     >
       <div className="bg-blue-500 p-2 px-4 text-sm rounded-xl">Newsletter</div>
@@ -65,14 +65,14 @@ const Hero = () => {
           type="email"
           placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
-          className="border w-full md:w-96 h-12 px-5 text-black rounded-full"
+          className="w-full md:w-96 h-12 px-5 text-white rounded-2xl bg-neutral-900 border-2 border-neutral-800"
           required
         />
         <button
           type="submit"
-          className="text-[15px] font-medium w-36 h-12 rounded-3xl transition-all duration-300 bg-blue-500 hover:bg-blue-600"
+          className="text-[15px] font-medium w-full md:w-24 h-12 rounded-2xl transition-all duration-300 bg-blue-500 hover:bg-blue-600"
         >
-          {loading ? <Loading /> : "Subskrybuj"}
+          {loading ? <Loading /> : "Prześlij"}
         </button>
       </form>
     </div>

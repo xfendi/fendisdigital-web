@@ -59,14 +59,14 @@ const FAQItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="p-5 bg-neutral-900 rounded-3xl border-2 border-neutral-800 text-start">
+    <div className="p-5 bg-neutral-900 rounded-3xl border-2 border-neutral-800">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="font-medium text-xl flex items-center justify-between w-full"
+        className="font-medium text-xl flex items-center justify-center md:justify-between w-full"
       >
         {question}
         <span
-          className={`transition-all duration-300 ${
+          className={`hidden md:flex transition-all duration-300 ${
             isOpen ? "rotate-180" : ""
           }`}
         >
@@ -89,7 +89,7 @@ const FAQItem = ({ question, answer }) => {
 const FAQSection = () => {
   return (
     <div
-      className="flex flex-col gap-10 text-center justify-center items-center px-5 py-[5%] md:px-[10%] 2xl:px-[15%]"
+      className="flex flex-col gap-10 text-center justify-center items-center px-5 py-[15%] md:py-[5%] md:px-[10%] 2xl:px-[15%]"
       id="faq"
     >
       <div className="bg-blue-500 p-2 px-4 text-sm rounded-xl">FAQ</div>
