@@ -48,7 +48,7 @@ const NavBar = () => {
         <ul
           className={`${
             width < 768 &&
-            "!flex flex-col absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            "!flex flex-col absolute w-max top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           } text-lg md:text-md font-medium hidden md:flex items-center gap-10`}
           ref={menuRef}
         >

@@ -16,7 +16,7 @@ const Products = () => {
         </div>
         <div className="flex flex-col md:flex-row gap-5">
           {ProductsArray.map((product, index) => (
-            <ProductCard product={product} index={index} />
+            <ProductCard product={product} index={index} key={index} />
           ))}
         </div>
       </div>

@@ -113,7 +113,12 @@ const Register = () => {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    setEmail(params.get("email") || "");
+    if (params.get("email") === "undefined") {
+      return;
+    } else {
+      console.log("email from params", params.get("email"));
+      setEmail(params.get("email"));
+    }
   }, []);
 
   return (
@@ -155,6 +160,7 @@ const Register = () => {
             type="text"
             id="name"
             placeholder="Wpisz swoja nazwę"
+            value={name}
             onChange={(e) => setName(e.target.value)}
             className="w-full md:w-96 h-12 px-5 text-white rounded-2xl bg-neutral-900 border-2 border-neutral-800"
             required

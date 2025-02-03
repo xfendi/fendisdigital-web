@@ -12,7 +12,7 @@ import Courses from "../Panel/Pages/Courses";
 import Forum from "../Panel/Pages/Forum";
 
 const Panel = () => {
-  const { user, loading, logout } = useUser();
+  const { logout, loading, user } = useUser();
 
   const available = false;
 
@@ -34,16 +34,16 @@ const Panel = () => {
       <div className="bg-neutral-950 h-screen w-screen flex flex-row gap-5 p-5">
         <Sidebar />
         <div className="bg-neutral-900 border-2 border-neutral-800 w-full h-full rounded-3xl p-5 flex">
-        <Routes>
-          <Route index element={<Main />} />
-          <Route path="/ebooks" element={<Ebooks />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/check-list" element={<CheckList />} />
-          <Route path="/road-maps" element={<RoadMaps />} />
-          <Route path="/quests" element={<Quests />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/forum" element={<Forum />} />
-        </Routes>
+          <Routes>
+            <Route index element={<Main />} />
+            <Route path="/ebooks" element={<Ebooks />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/check-list" element={<CheckList />} />
+            <Route path="/road-maps" element={<RoadMaps />} />
+            <Route path="/quests" element={<Quests />} />
+            <Route path="/courses" element={<Courses />} />
+            <Route path="/forum" element={<Forum />} />
+          </Routes>
         </div>
       </div>
     );

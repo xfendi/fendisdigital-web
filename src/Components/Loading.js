@@ -1,7 +1,6 @@
 import React from "react";
 
 const Loading = ({ big }) => {
-  console.log(big);
   return <div className={`loader m-auto ${big && "!w-16 !h-16 !border-t-4"}`}></div>;
 };
 
