@@ -1,4 +1,4 @@
-# Digital Dropshipping Store Website
+# Digital Program Website
 
 A simple website for selling e-books and courses using the digital products model.
 
