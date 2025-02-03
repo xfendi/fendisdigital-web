@@ -42,7 +42,7 @@ const NavBar = () => {
         } ${
           width < 768 &&
           showMenu &&
-          "opacity-100 bg-[rgba(0,0,0,0.9)] !pointer-events-auto"
+          "opacity-100 bg-[rgba(0,0,0,0.9)] z-50 !pointer-events-auto"
         } transition-all duration-300`}
       >
         <ul

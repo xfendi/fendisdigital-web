@@ -35,7 +35,7 @@ const App = () => {
             <Route path="/login" element={<Login />} />
 
             <Route
-              path="/panel"
+              path="/panel/*"
               element={
                 <ProtectedRoute>
                   <Panel />
